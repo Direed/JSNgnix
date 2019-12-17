@@ -14,7 +14,7 @@ const TableBody = props =>{
             <tr key={index}>
                 <p>location /{row.l}</p>
                 <p>proxy_pass {row.p};</p>
-                <p>proxy_set_header Accept-Encoding "";</p>
+                <p>proxy_set_header {row.psh};</p>
             </tr>
         );
     });

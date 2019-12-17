@@ -13,6 +13,7 @@ class Ngnix extends Component{
             p:''
         },
         i: 0,
+        chbox: 0,
         masproxy: []
       }
       constructor(props) {
@@ -50,11 +51,22 @@ class Ngnix extends Component{
         this.state.masproxy[this.state.i]['p:'] = this.state.proxy_pass;*/
         
         //this.state.masproxy.push(this.state.newproxy);
-        
+        this.state.chbox=document.getElementById('one');
+        if(this.state.chbox.checked)
+        {
+        this.state.masproxy.push({
+            l: this.state.location,
+            p: this.state.proxy_pass,
+            psh: 'Accept-Encoding ""'
+            });
+        }
+        else
+        {
         this.state.masproxy.push({
             l: this.state.location,
             p: this.state.proxy_pass
             });
+        }
 
         //this.state.i=this.state.i+1;
         event.preventDefault();
@@ -89,6 +101,8 @@ class Ngnix extends Component{
                     <input type='location' value={this.state.location} onChange={this.getLocation}></input>
                     <label>Proxy_Pass:</label>
                     <input type='proxy_pass' value={this.state.proxy_pass} onChange={this.getProxyPass}></input>
+                    <label>Accept-Encoding "" - </label>
+                    <input type="checkbox" id='one'></input>
                     <button onClick={this.addBlock} >Add block</button>
                 </div>
 
